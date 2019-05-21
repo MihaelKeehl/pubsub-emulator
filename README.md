@@ -24,7 +24,7 @@ version: "2"
 
 services:
   datastore:
-    image: MihaelKeehl/pubsub-emulator:latest
+    image: jurik/pubsub-emulator:latest
     environment:
       - DATASTORE_PROJECT_ID=project-test
     ports:
@@ -33,6 +33,6 @@ services:
 
 Kubernetes:
 
-```kubectl run pubsub-emulator --image=MihaelKeehl/pubsub-emulator:latest --restart=Always --port=8538
+```kubectl run pubsub-emulator --image=jurik/pubsub-emulator:latest --restart=Always --port=8538
   kubectl expose deployment pubsub-emulator --port 8538 --target-port 8538 --name pubsub-emulator --type ClusterIP
 kubectl wait --for=condition=Ready pod -l run=pubsub-emulator --timeout 1m```
