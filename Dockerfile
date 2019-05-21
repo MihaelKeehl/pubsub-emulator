@@ -32,10 +32,7 @@ RUN apt-get -qqy update && apt-get install -qqy \
 
 VOLUME ["/data"]
 
-COPY pubsub-init.sh .
-
-RUN chmod 755 ./pubsub-init.sh
-
 EXPOSE 8538
 
-ENTRYPOINT ["./pubsub-init.sh"]
+ENTRYPOINT ["gcloud", "beta", "emulators", "pubsub"]
+CMD ["start", "--host-port=0.0.0.0:8538", "--data-dir=/data"]
